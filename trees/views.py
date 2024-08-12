@@ -3,7 +3,7 @@ from django.contrib.auth.models import auth
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from trees.models import PlantedTree, Account, Tree
+from trees.models import PlantedTree, Account, Tree, Location, TreeData
 from django.core.exceptions import PermissionDenied
 
 
@@ -50,8 +50,8 @@ def user_dashboard(request):
 
 @login_required
 def account_dashboard(request):
-    user_accounts = request.user.account_users.all()
-    tree_list = PlantedTree.objects.filter(account__in=user_accounts)
+    user_accounts = request.user.account_users.filter(active=True)
+    tree_list = PlantedTree.objects.filter(account__in=user_accounts, account__active=True)
     data = {
         "tree_list": tree_list,
         "user_accounts": user_accounts
@@ -61,24 +61,20 @@ def account_dashboard(request):
 
 @login_required
 def plant_new_tree(request):
-    age = request.POST.get('age')
-    account = get_object_or_404(Account, pk=request.POST.get('account'))
-    tree = get_object_or_404(Tree, pk=request.POST.get('tree'))
-    latitude = request.POST.get('latitude')
-    longitude = request.POST.get('longitude')
-    PlantedTree.objects.create(
-        age=age,
-        account=account,
-        tree=tree,
-        latitude=latitude,
-        longitude=longitude,
-        user=request.user
+    tree_data = TreeData(
+        account=get_object_or_404(Account, pk=request.POST.get('account')),
+        tree=get_object_or_404(Tree, pk=request.POST.get('tree')),
+        location=Location(latitude=request.POST.get('latitude'), longitude=request.POST.get('longitude'))
     )
+    request.user.plant_tree(tree_data)
     return redirect(home)
 
 
 @login_required
 def create_new_tree(request):
+    name = request.POST.get('name')
+    scientific_name = request.POST.get('scientific_name')
+    Tree.objects.create(name=name, scientific_name=scientific_name)
     return redirect(home)
 
 

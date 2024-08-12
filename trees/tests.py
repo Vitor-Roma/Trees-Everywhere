@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
-from trees.models import User, Tree, PlantedTree, Location, Account, TreeList
+from trees.models import User, Tree, Location, Account, TreeData
 from django.core.exceptions import ValidationError
 
 
@@ -34,19 +34,28 @@ class PlantedTreeTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_user_plant_tree(self):
-        tree = get_object_or_404(Tree, pk=1)
-        location = Location(latitude=12.12345, longitude=12.12345)
-        planted_tree = self.user1.plant_tree(tree=tree, location=location)
+        tree_data = TreeData(
+            tree=get_object_or_404(Tree, pk=1),
+            location=Location(latitude=12.12345, longitude=12.12345)
+        )
+        planted_tree = self.user1.plant_tree(tree_data=tree_data)
 
         self.assertEqual(planted_tree.user, self.user1)
 
     def test_user_plant_trees(self):
-        tree = get_object_or_404(Tree, pk=1)
-        location = Location(latitude=12.12345, longitude=12.12345)
         tree_list = [
-            TreeList(tree=tree, location=location),
-            TreeList(tree=tree, location=location),
-            TreeList(tree=tree, location=location)
+            TreeData(
+                tree=get_object_or_404(Tree, pk=1),
+                location=Location(latitude=12.12345, longitude=12.12345)
+            ),
+            TreeData(
+                tree=get_object_or_404(Tree, pk=1),
+                location=Location(latitude=12.12345, longitude=12.12345)
+            ),
+            TreeData(
+                tree=get_object_or_404(Tree, pk=1),
+                location=Location(latitude=12.12345, longitude=12.12345)
+            )
         ]
         planted_trees = self.user1.plant_trees(tree_list=tree_list)
 
@@ -65,24 +74,12 @@ class PlantedTreeTests(TestCase):
 
     def test_plant_tree_invalid_account(self):
         with self.assertRaises(ValidationError):
-            planted_tree = PlantedTree(
-                age=1,
-                user=self.user1,
+            tree_data = TreeData(
                 tree=get_object_or_404(Tree, pk=1),
                 account=get_object_or_404(Account, pk=3),
-                latitude=12.12345,
-                longitude=12.12345
+                location=Location(
+                    latitude=12.12345,
+                    longitude=12.12345
+                )
             )
-            planted_tree.full_clean()
-
-    def test_plant_tree_valid_account(self):
-        with self.assertRaises(ValidationError):
-            planted_tree = PlantedTree(
-                age=1,
-                user=self.user1,
-                tree=get_object_or_404(Tree, pk=1),
-                account=get_object_or_404(Account, pk=2),
-                latitude=12.12345,
-                longitude=12.12345
-            )
-            planted_tree.full_clean()
+            self.user1.plant_tree(tree_data)

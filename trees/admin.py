@@ -3,23 +3,37 @@ from trees.models import User, Account, PlantedTree, Tree
 from django.contrib.auth.admin import UserAdmin
 
 
+class AccountUser(admin.TabularInline):
+    model = Account.users.through
+
+
+class TreePlanted(admin.StackedInline):
+    model = PlantedTree
+    fk_name = 'tree'
+
+
 @admin.register(User)
 class UserAdmin(UserAdmin):
-    search_fields = ('username', 'email')
-    list_display = ('username', 'email')
-    list_filter = ('username', 'email')
+    search_fields = ('username', 'email', 'is_staff')
+    list_display = ('username', 'email', 'is_staff')
+    list_filter = ('username', 'email', 'is_staff')
+
+    inlines = [AccountUser]
 
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
     list_display = ('name', 'active')
-    list_filter = ('name', 'active')
+    list_filter = ('name', 'active', 'users')
+    filter_horizontal = ('users',)
 
 
 @admin.register(Tree)
 class TreeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     list_filter = ('name',)
+
+    inlines = [TreePlanted]
 
 
 @admin.register(PlantedTree)

@@ -38,6 +38,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Idade</th>
                                         <th>Conta</th>
                                         <th>Nome</th>
@@ -48,9 +49,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% if not user_trees %}
+                                        <tr style="background-color: gray">
+                                            <td colspan="8" align="center" style="color: red">
+                                                <b>
+                                                    Nenhum registro encontrado
+                                                </b>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
                                     {% for tree in user_trees %}
                                         {% include 'detail-plant-tree-modal.html' %}
                                         <tr>
+                                            <td># {{ tree.id }}</td>
                                             <td>{{ tree.age }}</td>
                                             <td>{{ tree.account }}</td>
                                             <td>{{ tree.tree.name }}</td>

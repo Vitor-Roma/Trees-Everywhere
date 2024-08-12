@@ -38,6 +38,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Idade</th>
                                             <th>Usuário</th>
                                             <th>Nome</th>
@@ -48,27 +49,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for tree in tree_list %}
-                                            {% if tree.account.id == account.id %}
-                                                {% include 'detail-plant-tree-modal.html' %}
-                                                <tr>
-                                                    <td>{{ tree.age }}</td>
-                                                    <td>{{ tree.user }}</td>
-                                                    <td>{{ tree.tree.name }}</td>
-                                                    <td>{{ tree.tree.scientific_name }}</td>
-                                                    <td>{{ tree.created_at | date:"d/m/Y" }}</td>
-                                                    <td>{{ tree.location }}</td>
-                                                    <td>
-                                                        <a data-toggle="modal" data-target="#detail-plant-tree-{{ tree.id }}"
-                                                           style="cursor: pointer">
-                                                            <i class="fas fa-eye btn-edit"></i>
-                                                        </a>
-                                                        <a href="{% url 'delete_plant_tree' tree.id %}" style="margin-left: 20px">
-                                                            <i class="fas fa-trash btn-delete"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            {% endif %}
+                                        {% if not account.account_planted_tree.all %}
+                                        <tr style="background-color: gray">
+                                            <td colspan="8" align="center" style="color: red">
+                                                <b>
+                                                    Nenhum registro encontrado
+                                                </b>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                        {% for tree in account.account_planted_tree.all %}
+                                            {% include 'detail-plant-tree-modal.html' %}
+                                            <tr>
+                                                <td># {{ tree.id }}</td>
+                                                <td>{{ tree.age }}</td>
+                                                <td>{{ tree.user }}</td>
+                                                <td>{{ tree.tree.name }}</td>
+                                                <td>{{ tree.tree.scientific_name }}</td>
+                                                <td>{{ tree.created_at | date:"d/m/Y" }}</td>
+                                                <td>{{ tree.location }}</td>
+                                                <td>
+                                                    <a data-toggle="modal" data-target="#detail-plant-tree-{{ tree.id }}"
+                                                       style="cursor: pointer">
+                                                        <i class="fas fa-eye btn-edit"></i>
+                                                    </a>
+                                                    <a href="{% url 'delete_plant_tree' tree.id %}" style="margin-left: 20px">
+                                                        <i class="fas fa-trash btn-delete"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>

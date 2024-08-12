@@ -5,8 +5,6 @@
                 <div class="modal-body">
                     <p class="login-box-msg">Plantar uma nova Árvore</p>
                     {% csrf_token %}
-                    <label>Idade:</label>
-                    <input type="number" class="form-control" name="age" placeholder="Idade" required>
                     <label>Conta:</label>
                     <select class="form-control" name="account" required>
                         <option value="" selected="">---------------</option>
@@ -41,26 +39,10 @@
                 <div class="modal-body">
                     <p class="login-box-msg">Plantar uma nova Árvore</p>
                     {% csrf_token %}
-                    <label>Idade:</label>
-                    <input type="number" class="form-control" name="age" placeholder="Idade" required>
-                    <label>Conta:</label>
-                    <select class="form-control" name="account">
-                        <option value="" selected="">---------------</option>
-                            {% for account in user_accounts %}
-                                <option value="{{ account.id }}">{{ account.name }}</option>
-                            {% endfor %}
-                    </select>
-                    <label>Árvore:</label>
-                    <select class="form-control" name="tree" required>
-                        <option value="" selected="">---------------</option>
-                            {% for tree in tree_list %}
-                                <option value="{{ tree.id }}">{{ tree }}</option>
-                            {% endfor %}
-                    </select>
-                    <label>Latitude:</label>
-                    <input type="text" class="form-control" name="latitude" placeholder="12.12345" pattern="^\d{2}\.\d{5}$" title="O formato da coordenada deve ser: 12.12345" required>
-                    <label>Longitude:</label>
-                    <input type="text" class="form-control" name="longitude" placeholder="12.12345" pattern="^\d{2}\.\d{5}$" title="O formato da coordenada deve ser: 12.12345" required>
+                    <label>Nome:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Nome" required>
+                    <label>Nome Científico:</label>
+                    <input type="text" class="form-control" name="scientific_name" placeholder="Nome Científico" required>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="submit" class="btn button-color">Salvar</button>
