@@ -102,4 +102,4 @@ dmypy.json
 cython_debug/
 
 .idea/
-.sqlite3
+db.sqlite3

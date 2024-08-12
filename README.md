@@ -14,29 +14,24 @@
 	```
 	make build
 	```
- 
-- Criar usuário admin do Django com make admin
-	```
-	make admin
-	```
-
 - Dar a carga inicial no banco de dados pelas fixtures
 	```
 	make load_data
 	```
-
+- Criar usuário admin do Django com make admin
+	```
+	make admin
+	```
 - Usuários criados:
 	```
 	username=user1 password=password
 	username=user2 password=password
 	username=user3 password=password
 	```
-
 - Rodar os testes
 	```
 	make test
 	```
-
 ### Endpoints
 
 <a href="http://localhost:8000/admin/" style="color: #33C3DA;">
