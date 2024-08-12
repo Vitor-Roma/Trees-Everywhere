@@ -1,17 +1,21 @@
-<div class="modal fade" id="plant-new-tree" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="plant-new-tree-{{ account.id|default:'default-modal'  }}" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <form action="{% url 'plant_new_tree' %}" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-body">
                     <p class="login-box-msg">Plantar uma nova Árvore</p>
                     {% csrf_token %}
-                    <label>Conta:</label>
-                    <select class="form-control" name="account" required>
-                        <option value="" selected="">---------------</option>
-                            {% for account in user_accounts %}
-                                <option value="{{ account.id }}">{{ account.name }}</option>
-                            {% endfor %}
-                    </select>
+                    {% if account.id %}
+                        <input name="account" value="{{ account.id }}" hidden>
+                    {% else %}
+                        <label>Conta:</label>
+                        <select class="form-control" name="account" required>
+                            <option value="" selected="">---------------</option>
+                                {% for account in user_accounts %}
+                                    <option value="{{ account.id }}">{{ account.name }}</option>
+                                {% endfor %}
+                        </select>
+                    {% endif %}
                     <label>Árvore:</label>
                     <select class="form-control" name="tree" required>
                         <option value="" selected="">---------------</option>
