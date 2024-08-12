@@ -1,5 +1,18 @@
 # Trees-Everywhere
 
+## Principais ferramentas utilizadas:
+
+### poetry 
+
+- <p>Facilidade no gerenciamento de dependências e versões</p>
+- <p>Facilidade de adicionar, atualizar e remover dependências</p>
+- <p>Organização das dependências</p>
+
+### Docker
+
+- <p>Isolamento do ambiente (Evitar o famoso erro do funciona na minha máquina mas não na dos outros)</p>
+- <p>Facilidade em criar e interligar ambientes e serviços novos</p>
+
 # <b>Instalação</b>
 
 - Instalar o <b><a style="color: #337BEA;" href="https://www.docker.com/">Docker</a></b>
@@ -43,7 +56,7 @@
 <img src="https://github.com/user-attachments/assets/49fc0333-d5fe-417d-9041-6f9573654daa">
 <br>
 <br>
-<a href="http://localhost>8000/login/ style="color: #33C3DA;">
+<a href="http://localhost>8000/login/" style="color: #33C3DA;">
 	<p>
 		<b>Página de Login</b>
 	</p>
