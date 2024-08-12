@@ -36,3 +36,25 @@
 	```
 	make test
 	```
+
+### Endpoints
+
+<a href="http://localhost:8000/admin/" style="color: #33C3DA;">
+	<b>Página do Admin</b>
+</a>
+<br>
+<a href="http://localhost:8000/me/dashboard/" style="color: #33C3DA;">
+	<b>Árvores plantas pelo usuário</b>
+</a>
+<br>
+<a href="http://localhost:8000/accounts/dashboard/" style="color: #33C3DA;">
+	<b>Árvores plantadas por todas as contas do usuário</b>
+</a>
+<br>
+<a href="http://localhost:8000/api/me/planted_trees/" style="color: #33C3DA;">
+	<b>Api com todas as Árvores plantadas pelo usuário</b>
+</a>
+<br>
+<a href="http://localhost:8000/api/me/planted_trees/1/" style="color: #33C3DA;">
+	<b>Api mostrando os dados de uma árvores plantada pelo ID</b>
+</a>
