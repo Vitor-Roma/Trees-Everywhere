@@ -1,0 +1,49 @@
+[
+    {
+        "model": "trees.user",
+        "pk": 4,
+        "fields": {
+            "username": "user0",
+            "password": "pbkdf2_sha256$870000$vNeHq4xyZFDkDnqPKqVl9G$/fW3KFgdkg/P5QMUoAzDjNQuHuy5G9ioB7g/7QFw+28=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-08-11T00:00:00Z"
+        }
+    },
+    {
+        "model": "trees.user",
+        "pk": 1,
+        "fields": {
+            "username": "user1",
+            "password": "pbkdf2_sha256$870000$vNeHq4xyZFDkDnqPKqVl9G$/fW3KFgdkg/P5QMUoAzDjNQuHuy5G9ioB7g/7QFw+28=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-08-11T00:00:00Z"
+        }
+    },
+    {
+        "model": "trees.user",
+        "pk": 2,
+        "fields": {
+            "username": "user2",
+            "password": "pbkdf2_sha256$870000$vNeHq4xyZFDkDnqPKqVl9G$/fW3KFgdkg/P5QMUoAzDjNQuHuy5G9ioB7g/7QFw+28=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-08-11T00:00:00Z"
+        }
+    },
+    {
+        "model": "trees.user",
+        "pk": 3,
+        "fields": {
+            "username": "user3",
+            "password": "pbkdf2_sha256$870000$vNeHq4xyZFDkDnqPKqVl9G$/fW3KFgdkg/P5QMUoAzDjNQuHuy5G9ioB7g/7QFw+28=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    }
+]

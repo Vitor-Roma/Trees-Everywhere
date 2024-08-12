@@ -1,0 +1,32 @@
+[
+    {
+        "model": "trees.tree",
+        "pk": 1,
+        "fields": {
+            "name": "Oak",
+            "scientific_name": "Quercus robur",
+            "created_at": "2024-08-11T15:30:00Z",
+            "updated_at": "2024-08-11T15:30:00Z"
+        }
+    },
+    {
+        "model": "trees.tree",
+        "pk": 2,
+        "fields": {
+            "name": "Pine",
+            "scientific_name": "Pinus sylvestris",
+            "created_at": "2024-08-11T15:30:00Z",
+            "updated_at": "2024-08-11T15:30:00Z"
+        }
+    },
+    {
+        "model": "trees.tree",
+        "pk": 3,
+        "fields": {
+            "name": "Maple",
+            "scientific_name": "Acer saccharum",
+            "created_at": "2024-08-11T15:30:00Z",
+            "updated_at": "2024-08-11T15:30:00Z"
+        }
+    }
+]

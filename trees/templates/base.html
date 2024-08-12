@@ -1,0 +1,244 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}titulo{% endblock %}</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap-grid.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.min.css">
+
+    <style>
+        .errorlist{
+            font-size: 13px;
+            color: red;
+            margin-left: -20px;
+        }
+        #size-menu{
+            width: 400px;
+        }
+
+        #circle-importance{
+            margin-top: 8px;
+            margin-right: 13px;
+        }
+
+        #trash-button{
+            margin-left:250px;
+            width: 40px;
+            margin-top: -10px;
+        }
+
+        .pointer {
+            cursor: pointer;
+        }
+
+        .value-tag {
+            font-size: 20px
+        }
+
+        .card {
+          border-radius: 20px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .card:hover {
+          transform: translateY(5epx);
+          box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card p {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 16px;
+          color: #666;
+          line-height: 1.5;
+          margin-bottom: 20px;
+        }
+
+        .card a {
+          display: inline-block;
+          font-family: 'Open Sans', sans-serif;
+          font-size: 16px;
+          font-weight: bold;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .small-box {
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          flex-grow: 1;
+          width: 100%;
+        }
+
+        .btn-edit {
+            color: #2196F3;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-edit:hover {
+            transform: scale(1.3);
+        }
+
+        .money {
+          color: #5961d4;
+          font-size: 16px;
+          font-weight: bold;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .money-2 {
+            color: #E63946;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .money-3 {
+            color: #FFA500;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-delete {
+            color: #E63946;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-delete:hover {
+            transform: scale(1.3);
+        }
+
+        .nav-custom {
+          background-image: url("https://bucket-irating.s3.amazonaws.com/20496552.jpg");
+          color: white !important;
+        }
+
+        section {
+            background-image: url("https://bucket-irating.s3.amazonaws.com/20496552.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            position: relative;
+        }
+
+        .custom-small-box {
+            background-color: transparent;
+            border: 3px solid #6699ff;
+            color: #6699ff;
+            border-radius: 50px;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .custom-small-box:hover {
+            border: 3px solid #007bff;
+            color: #007bff;
+        }
+
+        .custom-md-2 {
+          -ms-flex: 0 0 20%;
+          flex: 0 0 20%;
+          max-width: 20%;
+        }
+
+        .card-color {
+            background-color: MidnightBlue;
+            color: white;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .button-color {
+            background-color: midnightblue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+    </style>
+
+
+</head>
+<body class="hold-transition">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light nav-custom" style="margin-left: 0px;">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href='/me/dashboard/' class="nav-link text-white"><b>Suas Árvores</b></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href='/accounts/dashboard' class="nav-link text-white"><b>Árvores das suas Contas</b></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href='/logout' class="nav-link text-white"><b>Sair</b></a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="content-wrapper" style="margin-left:0px">
+
+        {% block content %}Site{% endblock %}
+
+    </section>
+</div>
+</body>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- AdminLTE App -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>
+<script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- InputMask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+<!--ChartJs-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".input-money").inputmask('decimal', {
+            'alias': 'numeric',
+            'groupSeparator': '.',
+            'radixPoint': ",",
+            'digits': 2,
+            'digitsOptional': false,
+            'allowMinus': true,
+            'prefix': 'R$ ',
+            'rightAlign': false,
+            'unmaskAsNumber': true,
+            'removeMaskOnSubmit': true,
+        });
+    });
+</script>
+{% block scripts %}{% endblock %}

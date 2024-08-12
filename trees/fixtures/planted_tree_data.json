@@ -1,0 +1,44 @@
+[
+    {
+        "model": "trees.plantedtree",
+        "pk": 1,
+        "fields": {
+            "age": 5,
+            "user": 1,
+            "tree": 1,
+            "account": 1,
+            "latitude": "12.12345",
+            "longitude": "-8.12345",
+            "created_at": "2024-08-11T15:30:00Z",
+            "updated_at": "2024-08-11T15:30:00Z"
+        }
+    },
+    {
+        "model": "trees.plantedtree",
+        "pk": 2,
+        "fields": {
+            "age": 3,
+            "user": 2,
+            "tree": 2,
+            "account": 2,
+            "latitude": "13.12345",
+            "longitude": "-7.12345",
+            "created_at": "2024-08-11T15:30:00Z",
+            "updated_at": "2024-08-11T15:30:00Z"
+        }
+    },
+    {
+        "model": "trees.plantedtree",
+        "pk": 3,
+        "fields": {
+            "age": 7,
+            "user": 3,
+            "tree": 3,
+            "account": 3,
+            "latitude": "14.12345",
+            "longitude": "-6.12345",
+            "created_at": "2024-08-11T15:30:00Z",
+            "updated_at": "2024-08-11T15:30:00Z"
+        }
+    }
+]

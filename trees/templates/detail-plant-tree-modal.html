@@ -1,0 +1,20 @@
+<div class="modal fade" id="detail-plant-tree-{{ tree.id }}" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="login-box-msg">Plantar uma nova Árvore</p>
+                {% csrf_token %}
+                <label>Idade:</label>
+                <p>{{ tree.age }}</p>
+                <label>Conta:</label>
+                <p>{{ tree.account }}</p>
+                <label>Árvore:</label>
+                <p>{{ tree.tree }}</p>
+                <label>Latitude:</label>
+                <p>{{ tree.latitude }}</p>
+                <label>Longitude:</label>
+                <p>{{ tree.longitude }}</p>
+            </div>
+        </div>
+    </div>
+</div>
