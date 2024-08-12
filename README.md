@@ -22,7 +22,7 @@
 
 - Dar a carga inicial no banco de dados pelas fixtures
 	```
-	make loaddata
+	make load_data
 	```
 
 - Rodar os testes
