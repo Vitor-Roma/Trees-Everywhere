@@ -1,8 +1,9 @@
-import datetime
+from django.utils import timezone
 from dataclasses import dataclass
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.exceptions import ValidationError
+import humanize
 
 
 @dataclass
@@ -52,7 +53,8 @@ class PlantedTree(BaseModel):
 
     @property
     def age(self) -> str:
-        return f"{self.tree.created_at.year - datetime.datetime.now().year} anos"
+        humanize.i18n.activate("pt_BR")
+        return humanize.naturaldelta(timezone.now() - self.tree.created_at)
 
 
 class Account(BaseModel):
