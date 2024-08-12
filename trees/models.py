@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 @dataclass
@@ -41,6 +42,10 @@ class PlantedTree(BaseModel):
 
     def __str__(self) -> str:
         return f"{self.tree} planted at : {self.location}"
+
+    def clean(self):
+        if self.user not in self.account.users.all():
+            raise ValidationError("O usuário não está associado a esta conta.")
 
     @property
     def location(self) -> str:

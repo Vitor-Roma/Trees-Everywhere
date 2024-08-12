@@ -3,6 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from trees.models import User, Tree, PlantedTree, Location, Account, TreeList
+from django.core.exceptions import ValidationError
 
 
 class PlantedTreeTests(TestCase):
@@ -60,3 +61,28 @@ class PlantedTreeTests(TestCase):
         self.assertTemplateUsed(response, 'account_dashboard.html')
         self.assertIn(f'<td>Pine</td>', response.content.decode('utf-8'))
         self.assertNotIn(f'<td>Maple</td>', response.content.decode('utf-8'))
+
+
+    def test_plant_tree_invalid_account(self):
+        with self.assertRaises(ValidationError):
+            planted_tree = PlantedTree(
+                age=1,
+                user=self.user1,
+                tree=get_object_or_404(Tree, pk=1),
+                account=get_object_or_404(Account, pk=3),
+                latitude=12.12345,
+                longitude=12.12345
+            )
+            planted_tree.full_clean()
+
+    def test_plant_tree_valid_account(self):
+        with self.assertRaises(ValidationError):
+            planted_tree = PlantedTree(
+                age=1,
+                user=self.user1,
+                tree=get_object_or_404(Tree, pk=1),
+                account=get_object_or_404(Account, pk=2),
+                latitude=12.12345,
+                longitude=12.12345
+            )
+            planted_tree.full_clean()
