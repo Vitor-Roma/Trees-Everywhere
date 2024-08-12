@@ -50,8 +50,12 @@ def user_dashboard(request):
 
 @login_required
 def account_dashboard(request):
-    account_trees = PlantedTree.objects.filter(account__in=request.user.account_users.all())
-    data = {"tree_list": account_trees}
+    user_accounts = request.user.account_users.all()
+    tree_list = PlantedTree.objects.filter(account__in=user_accounts)
+    data = {
+        "tree_list": tree_list,
+        "user_accounts": user_accounts
+    }
     return render(request, 'account_dashboard.html', data)
 
 
