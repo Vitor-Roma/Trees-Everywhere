@@ -1,5 +1,5 @@
 from django.contrib import admin
-from trees.models import User, Account, PlantedTree, Tree
+from trees.models import User, Account, PlantedTree, Tree, Profile
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -46,3 +46,8 @@ class PlantedTreeAdmin(admin.ModelAdmin):
     list_display = ('tree', 'tree_type')
     list_filter = ('tree__scientific_name', 'user__username')
 
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('about', 'user')
+    list_filter = ('about', 'user')
